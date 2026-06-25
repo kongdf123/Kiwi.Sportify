@@ -1,19 +1,27 @@
 <template>
-	<nav class="p-4">
+	<nav class="px-5 space-y-2">
 		<RouterLink
 			v-for="item in items"
 			:key="item.path"
 			:to="item.path"
-			class="flex items-center gap-3 px-4 py-3 rounded-xl mb-2 hover:bg-slate-100"
-			active-class="bg-blue-50 text-blue-700"
+			class="group flex items-center gap-4 px-5 py-4 rounded-2xl transition"
+			active-class="bg-blue-50shadow-sm"
 		>
-			<span>
+			<div
+				class="w-10 h-10 rounded-xl bg-slate-100 group-hover:bg-blue-100 flex items-center justify-center"
+			>
 				{{ item.icon }}
-			</span>
+			</div>
 
-			<span>
-				{{ item.label }}
-			</span>
+			<div>
+				<div class="font-medium">
+					{{ item.label }}
+				</div>
+
+				<div class="text-xs text-slate-500">
+					{{ item.desc }}
+				</div>
+			</div>
 		</RouterLink>
 	</nav>
 </template>
@@ -23,31 +31,42 @@ const items = [
 	{
 		icon: "⌂",
 		label: "Dashboard",
+		desc: "Overview",
 		path: "/dashboard",
 	},
+
 	{
 		icon: "🏃",
 		label: "Athletes",
+		desc: "Performance",
 		path: "/athletes",
 	},
+
 	{
 		icon: "📡",
 		label: "Devices",
+		desc: "Sensors",
 		path: "/devices",
 	},
+
 	{
 		icon: "🎬",
 		label: "Sessions",
+		desc: "Capture",
 		path: "/sessions",
 	},
+
 	{
 		icon: "📈",
 		label: "Analysis",
+		desc: "Insights",
 		path: "/analysis",
 	},
+
 	{
 		icon: "📄",
 		label: "Reports",
+		desc: "Export",
 		path: "/reports",
 	},
 ];

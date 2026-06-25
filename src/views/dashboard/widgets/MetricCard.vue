@@ -1,11 +1,17 @@
 <template>
 	<BaseCard>
-		<div class="text-sm text-slate-500">
-			{{ title }}
-		</div>
+		<div class="flex justify-between">
+			<div>
+				<div class="text-sm text-slate-500">
+					{{ title }}
+				</div>
 
-		<div class="text-4xl font-semibold mt-3">
-			{{ value }}
+				<div class="mt-4 text-5xl font-semibold">
+					{{ value }}
+				</div>
+			</div>
+
+			<div class="w-14 h-14 rounded-2xl bg-blue-50" />
 		</div>
 	</BaseCard>
 </template>
@@ -15,6 +21,7 @@ import BaseCard from "@/shared/ui/BaseCard.vue";
 
 defineProps<{
 	title: string;
+
 	value: string;
 }>();
 </script>

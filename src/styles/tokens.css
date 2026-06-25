@@ -1,0 +1,9 @@
+@theme {
+	--color-primary: var(--primary);
+
+	--color-surface: var(--surface);
+
+	--color-bg: var(--bg);
+
+	--color-text: var(--text);
+}

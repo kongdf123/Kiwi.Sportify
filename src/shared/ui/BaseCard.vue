@@ -1,5 +1,7 @@
 <template>
-	<div class="rounded-2xl bg-white border p-6">
+	<div
+		class="bg-[var(--surface)] rounded-[var(--radius)] border border-[var(--border)] shadow-[var(--shadow)] p-6"
+	>
 		<slot />
 	</div>
 </template>
