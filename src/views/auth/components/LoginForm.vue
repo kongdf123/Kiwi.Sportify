@@ -1,17 +1,24 @@
 <script setup lang="ts">
 import { reactive } from "vue";
 import { useRouter } from "vue-router";
+import { useAuthStore } from "@/stores/auth.store";
 import BaseButton from "@/shared/ui/BaseButton.vue";
 
 const router = useRouter();
+const auth = useAuthStore();
 
 const form = reactive({
 	email: "",
 	password: "",
 });
 
-function login() {
-	router.push("/dashboard");
+async function login() {
+	auth.login(
+		form.email,
+		form.password,
+	);
+
+	router.replace("/dashboard");
 }
 </script>
 

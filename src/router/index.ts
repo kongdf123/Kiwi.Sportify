@@ -1,16 +1,17 @@
 import MainLayout from "@/layouts/MainLayout.vue";
 import { createRouter, createWebHistory } from "vue-router";
+import { setupAuthGuard } from "./auth.guard";
 
 const router = createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),
 	routes: [
 		{
-		  path: "/",
-		  redirect: "/login",
+			path: "/",
+			redirect: "/login",
 		},
 		{
-		  path: "/login",
-		  component: () => import("@/views/auth/LoginView.vue"),
+			path: "/login",
+			component: () => import("@/views/auth/LoginView.vue"),
 		},
 		// {
 		// 	path: "",
@@ -96,27 +97,29 @@ const router = createRouter({
 	],
 });
 
-router.beforeEach((to, from, next) => {
-	const token = localStorage.getItem("token");
-	const role = localStorage.getItem("role");
+setupAuthGuard(router);
 
-	if (!token && to.path !== "/login") {
-		return next("/login");
-	}
+// router.beforeEach((to, from, next) => {
+// 	const token = localStorage.getItem("token");
+// 	const role = localStorage.getItem("role");
 
-	const roleMap: Record<string, string[]> = {
-		"/inventory": ["Admin", "Warehouse"],
-		"/suppliers": ["Admin", "Planner"],
-		"/purchase-orders": ["Admin", "Planner"],
-	};
+// 	if (!token && to.path !== "/login") {
+// 		return next("/login");
+// 	}
 
-	const allowedRoles = roleMap[to.path];
+// 	const roleMap: Record<string, string[]> = {
+// 		"/inventory": ["Admin", "Warehouse"],
+// 		"/suppliers": ["Admin", "Planner"],
+// 		"/purchase-orders": ["Admin", "Planner"],
+// 	};
 
-	if (allowedRoles && role && !allowedRoles.includes(role)) {
-		return next("/dashboard");
-	}
+// 	const allowedRoles = roleMap[to.path];
 
-	next();
-});
+// 	if (allowedRoles && role && !allowedRoles.includes(role)) {
+// 		return next("/dashboard");
+// 	}
+
+// 	next();
+// });
 
 export default router;
