@@ -33,6 +33,6 @@
 </template>
 <script setup lang="ts">
 import BaseCard from "@/shared/ui/BaseCard.vue";
-import MetricCard from "./widgets/MetricCard.vue";
+import MetricCard from "@/shared/ui/MetricCard.vue";
 </script>
 
