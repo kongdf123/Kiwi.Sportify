@@ -1,28 +1,60 @@
+<script setup lang="ts">
+import SidebarMenu from "./SidebarMenu.vue";
+import type { SidebarItem } from "@/types/sidebar";
+
+const menus: SidebarItem[] = [
+	{
+		label: "Dashboard",
+		icon: "🏠",
+		to: "/dashboard",
+	},
+
+	{
+		label: "Athletes",
+		icon: "🏃",
+		to: "/athletes",
+	},
+
+	{
+		label: "Devices",
+		icon: "⌚",
+		to: "/devices",
+	},
+
+	{
+		label: "Sessions",
+		icon: "🎯",
+		to: "/sessions",
+	},
+
+	{
+		label: "Analysis",
+		icon: "📈",
+		to: "/analysis",
+	},
+
+	{
+		label: "Reports",
+		icon: "📄",
+		to: "/reports",
+	},
+];
+</script>
+
 <template>
 	<aside
-		class="w-[280px] bg-white/80 backdrop-blur-xl border-r border-[var(--border)] flex flex-col"
+		class="h-full flex flex-col bg-[var(--sidebar)] border-r border-[var(--border)]"
 	>
-		<div class="px-8 py-8">
-			<div class="flex items-center gap-4">
-				<div
-					class="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-600 to-cyan-500 shadow-lg"
-				/>
+		<div class="px-6 py-8">
+			<div class="text-2xl font-bold tracking-wide">SPORTIFY</div>
 
-				<div>
-					<div class="text-2xl font-semibold tracking-tight">
-						Sportify
-					</div>
-
-					<div class="text-sm text-[var(--text-soft)]">
-						Sports Science Platform
-					</div>
-				</div>
+			<div class="mt-1 text-sm text-[var(--text-soft)]">
+				Sports Science Platform
 			</div>
 		</div>
 
-		<SidebarMenu />
-
-		<div class="mt-auto p-8">
+		<SidebarMenu :items="menus" />
+		<div class="mt-auto p-5">
 			<div
 				class="rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-700 p-5 text-white"
 			>
@@ -35,7 +67,3 @@
 		</div>
 	</aside>
 </template>
-
-<script setup lang="ts">
-import SidebarMenu from "./SidebarMenu.vue";
-</script>

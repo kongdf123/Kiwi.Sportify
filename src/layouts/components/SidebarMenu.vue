@@ -1,73 +1,49 @@
+<script setup lang="ts">
+import { useRoute } from "vue-router";
+import type { SidebarItem } from "@/types/sidebar";
+
+const props = defineProps<{
+	items: SidebarItem[];
+}>();
+
+const route = useRoute();
+
+function isActive(path: string) {
+	return route.path === path || route.path.startsWith(path + "/");
+}
+</script>
+
 <template>
-	<nav class="px-5 space-y-2">
+	<nav class="px-3 space-y-2">
 		<RouterLink
 			v-for="item in items"
-			:key="item.path"
-			:to="item.path"
-			class="group flex items-center gap-4 px-5 py-4 rounded-2xl transition"
-			active-class="bg-blue-50shadow-sm"
+			:key="item.to"
+			:to="item.to"
+			class="group relative flex items-center gap-4 rounded-2xl px-5 py-4 transition-all duration-200"
+			:class="
+				isActive(item.to)
+					? [
+							'bg-gradient-to-r',
+							'from-blue-600',
+							'to-indigo-600',
+							'text-white',
+							'shadow-lg',
+						]
+					: ['text-[var(--text)]', 'hover:bg-slate-100']
+			"
 		>
-			<div
-				class="w-10 h-10 rounded-xl bg-slate-100 group-hover:bg-blue-100 flex items-center justify-center"
-			>
+			<div class="text-xl opacity-90">
 				{{ item.icon }}
 			</div>
 
-			<div>
-				<div class="font-medium">
-					{{ item.label }}
-				</div>
-
-				<div class="text-xs text-slate-500">
-					{{ item.desc }}
-				</div>
+			<div class="font-medium">
+				{{ item.label }}
 			</div>
+
+			<div
+				v-if="isActive(item.to)"
+				class="absolute left-0 top-4 bottom-4 w-1 rounded-r-full bg-cyan-300"
+			/>
 		</RouterLink>
 	</nav>
 </template>
-
-<script setup lang="ts">
-const items = [
-	{
-		icon: "⌂",
-		label: "Dashboard",
-		desc: "Overview",
-		path: "/dashboard",
-	},
-
-	{
-		icon: "🏃",
-		label: "Athletes",
-		desc: "Performance",
-		path: "/athletes",
-	},
-
-	{
-		icon: "📡",
-		label: "Devices",
-		desc: "Sensors",
-		path: "/devices",
-	},
-
-	{
-		icon: "🎬",
-		label: "Sessions",
-		desc: "Capture",
-		path: "/sessions",
-	},
-
-	{
-		icon: "📈",
-		label: "Analysis",
-		desc: "Insights",
-		path: "/analysis",
-	},
-
-	{
-		icon: "📄",
-		label: "Reports",
-		desc: "Export",
-		path: "/reports",
-	},
-];
-</script>

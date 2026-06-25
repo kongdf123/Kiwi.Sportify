@@ -11,4 +11,8 @@
 	--text-soft: #667085;
 	--shadow: 0 10px 40px rgba(22, 93, 255, 0.06);
 	--radius: 18px;
+
+	--sidebar: #ffffff;
+	--sidebar-active: #2563eb;
+	--sidebar-hover: #f3f4f6;
 }

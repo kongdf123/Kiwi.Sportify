@@ -3,10 +3,12 @@
 		class="h-[88px] bg-white/70 backdrop-blur-xl border-b border-[var(--border)] px-10 flex items-center justify-between"
 	>
 		<div>
-			<div class="text-3xl font-semibold">Dashboard</div>
+			<div class="text-3xl font-semibold">
+				<!-- Dashboard -->
+			</div>
 
 			<div class="text-sm text-[var(--text-soft)]">
-				Realtime sports performance
+				<!-- Realtime sports performance -->
 			</div>
 		</div>
 
