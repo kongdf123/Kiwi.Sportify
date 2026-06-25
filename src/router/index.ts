@@ -4,14 +4,14 @@ import { createRouter, createWebHistory } from "vue-router";
 const router = createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),
 	routes: [
-		// {
-		//   path: "/",
-		//   redirect: "/login",
-		// },
-		// {
-		//   path: "/login",
-		//   component: () => import("../views/login/LoginView.vue"),
-		// },
+		{
+		  path: "/",
+		  redirect: "/login",
+		},
+		{
+		  path: "/login",
+		  component: () => import("@/views/auth/LoginView.vue"),
+		},
 		// {
 		// 	path: "",
 		// 	redirect: "/dashboard",
