@@ -4,6 +4,10 @@ import AnalysisSessionPanel from "./components/AnalysisSessionPanel.vue";
 import AnalysisMetrics from "./components/AnalysisMetrics.vue";
 import AnalysisChart from "./components/AnalysisChart.vue";
 import AnalysisInsightCard from "./components/AnalysisInsightCard.vue";
+
+import ForceCurve from "./components/ForceCurve.vue";
+import VelocityCurve from "./components/VelocityCurve.vue";
+import ReplayTimeline from "./components/ReplayTimeline.vue";
 </script>
 
 <template>
@@ -18,7 +22,11 @@ import AnalysisInsightCard from "./components/AnalysisInsightCard.vue";
 			<div class="space-y-6">
 				<AnalysisMetrics />
 
-				<AnalysisChart />
+				<ForceCurve />
+				<VelocityCurve />
+				<ReplayTimeline />
+
+				<!-- <AnalysisChart /> -->
 			</div>
 		</template>
 
