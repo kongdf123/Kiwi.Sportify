@@ -1,27 +1,57 @@
 import * as echarts from "echarts";
-
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref, shallowRef, onMounted, onUnmounted, nextTick } from "vue";
 
 export function useEChart() {
-	const el = ref();
+	const el = ref<HTMLElement>();
+	const chart = shallowRef<echarts.ECharts>();
+	let pendingOption: echarts.EChartsOption | null = null;
 
-	let chart: echarts.ECharts;
+	async function init() {
+		await nextTick();
 
-	onMounted(() => {
-		chart = echarts.init(el.value);
-	});
+		if (!el.value || chart.value) {
+			return;
+		}
 
-	function render(option: echarts.EChartsOption) {
-		chart?.setOption(option);
+		chart.value = echarts.init(el.value);
+
+		if (pendingOption) {
+			chart.value.setOption(pendingOption);
+		}
+
+		window.addEventListener("resize", resize);
 	}
 
-	onUnmounted(() => {
-		chart?.dispose();
-	});
+	function render(option: echarts.EChartsOption) {
+		pendingOption = option;
+
+		if (!chart.value) {
+			return;
+		}
+
+		chart.value.setOption(option, true);
+	}
+
+	function resize() {
+		chart.value?.resize();
+	}
+
+	function destroy() {
+		window.removeEventListener("resize", resize);
+
+		chart.value?.dispose();
+
+		chart.value = undefined;
+	}
+
+	onMounted(init);
+
+	onUnmounted(destroy);
 
 	return {
 		el,
-
 		render,
+		resize,
+		chart,
 	};
 }
