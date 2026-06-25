@@ -17,6 +17,11 @@ const router = createRouter({
 		// 	redirect: "/dashboard",
 		// },
 		{
+			path: "/analysis",
+			name: "analysis",
+			component: () => import("@/views/analysis/AnalysisView.vue"),
+		},
+		{
 			path: "/",
 			component: MainLayout,
 			children: [
@@ -29,7 +34,19 @@ const router = createRouter({
 				{
 					path: "athletes",
 					name: "athletes",
-					component: () => import("@/views/athletes/AthletesView.vue"),
+					component: () =>
+						import("@/views/athletes/AthletesView.vue"),
+				},
+				{
+					path: "devices",
+					name: "devices",
+					component: () => import("@/views/devices/DevicesView.vue"),
+				},
+				{
+					path: "sessions",
+					name: "sessions",
+					component: () =>
+						import("@/views/sessions/SessionsView.vue"),
 				},
 				// {
 				//   path: "production/workorders",
