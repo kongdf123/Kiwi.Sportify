@@ -1,13 +1,24 @@
 <script setup lang="ts">
+import { useRouter } from "vue-router";
 import BaseCard from "@/shared/ui/BaseCard.vue";
 import BaseButton from "@/shared/ui/BaseButton.vue";
 
 import { useSessionCreateStore } from "@/stores/session-create.store";
+import { useSessionLiveStore } from "@/stores/session-live.store";
 
-const store = useSessionCreateStore();
+const createStore = useSessionCreateStore();
+const liveStore = useSessionLiveStore();
 
-function submit() {
-	store.submit();
+// function submit() {
+// 	store.submit();
+// }
+
+const router = useRouter();
+
+async function submit() {
+	const id = await liveStore.start();
+
+	router.push(`/sessions/${id}/live`);
 }
 </script>
 
@@ -19,44 +30,48 @@ function submit() {
 			<div class="space-y-5">
 				<div>
 					Athlete:
-					{{ store.form.athlete.name }}
+					{{ createStore.form.athlete.name }}
 				</div>
 				<div>
 					Session Name:
-					{{ store.form.sessionName }}
+					{{ createStore.form.sessionName }}
 				</div>
 				<div>
 					Protocol:
-					{{ store.form.protocolId }}
+					{{ createStore.form.protocolId }}
 				</div>
 
 				<div>
 					Devices:
-					{{ store.form.deviceIds.join(", ") }}
+					{{ createStore.form.deviceIds.join(", ") }}
 				</div>
 
 				<div>
 					Duration:
-					{{ store.form.capture.duration }}
+					{{ createStore.form.capture.duration }}
 					min
 				</div>
 
 				<div>
 					Sampling:
-					{{ store.form.capture.samplingRate }}
+					{{ createStore.form.capture.samplingRate }}
 					Hz
 				</div>
 
 				<div>
 					Auto Stop:
 
-					{{ store.form.capture.autoStop ? "Enabled" : "Disabled" }}
+					{{
+						createStore.form.capture.autoStop
+							? "Enabled"
+							: "Disabled"
+					}}
 				</div>
 			</div>
 		</BaseCard>
 
 		<div class="mt-10 flex justify-between">
-			<BaseButton variant="secondary" @click="store.prev">
+			<BaseButton variant="secondary" @click="createStore.prev">
 				Back
 			</BaseButton>
 

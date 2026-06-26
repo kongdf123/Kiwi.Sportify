@@ -56,6 +56,12 @@ const router = createRouter({
 						import("@/views/sessions/SessionCreate.vue"),
 				},
 				{
+					path: "/sessions/:id/live",
+					name: "session-live",
+					component: () =>
+						import("@/views/sessions/SessionLivePage.vue"),
+				},
+				{
 					path: "reports",
 					name: "reports",
 					component: () => import("@/views/reports/ReportsView.vue"),

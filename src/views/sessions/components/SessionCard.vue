@@ -52,9 +52,14 @@ defineProps<{
 		</div>
 
 		<div class="mt-8 flex justify-end gap-3">
-			<BaseButton variant="secondary"> Replay </BaseButton>
-
-			<BaseButton> Open </BaseButton>
+			<RouterLink :to="`/sessions/${session.id}/live`">
+				<BaseButton variant="secondary"> Replay </BaseButton>
+			</RouterLink>
+			
+			<RouterLink :to="`/sessions/new`">
+				<BaseButton> Open </BaseButton>
+			</RouterLink>
+			<!-- <BaseButton> Open </BaseButton> -->
 		</div>
 	</BaseCard>
 </template>
