@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import BaseCard from "@/shared/ui/BaseCard.vue";
+import BaseButton from "@/shared/ui/BaseButton.vue";
 import SessionStatus from "./SessionStatus.vue";
 import type { Session } from "@/types/session";
 
