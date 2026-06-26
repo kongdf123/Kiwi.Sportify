@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import MetricCard from "@/shared/ui/MetricCard.vue";
-import { useDashboardStore } from "@/stores/dashboard.store";
+//import { useDashboardStore } from "@/stores/dashboard.store";
 
-const store = useDashboardStore();
+//const _store = useDashboardStore();
 
 const metrics = computed(() => [
 	{

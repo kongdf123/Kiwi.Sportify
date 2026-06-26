@@ -24,6 +24,8 @@ export const useAuthStore = defineStore("auth", {
 				role: "admin",
 			};
 
+			console.log("Logged in as", user.name+" ("+password+")");
+
 			this.token = token;
 			this.user = user;
 

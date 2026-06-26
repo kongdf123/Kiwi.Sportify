@@ -6,7 +6,7 @@ import { useEChart } from "@/hooks/useEChart";
 
 const store = useReportStore();
 
-const { el, render } = useEChart();
+const { el:_el, render } = useEChart();
 
 const chartOption = computed<EChartsOption>(() => ({
 	tooltip: {
@@ -82,6 +82,6 @@ watch(
 			<div class="text-sm text-[var(--text-soft)]">Updated just now</div>
 		</div>
 
-		<div ref="el" class="mt-8 h-[520px] w-full" />
+		<div ref="_el" class="mt-8 h-[520px] w-full" />
 	</div>
 </template>

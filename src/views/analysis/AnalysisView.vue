@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import WorkspaceLayout from "@/layouts/WorkspaceLayout.vue";
 import AnalysisSessionPanel from "./components/AnalysisSessionPanel.vue";
-import AnalysisMetrics from "./components/AnalysisMetrics.vue";
-import AnalysisChart from "./components/AnalysisChart.vue";
+import AnalysisMetrics from "./components/AnalysisMetrics.vue"; 
 import AnalysisInsightCard from "./components/AnalysisInsightCard.vue";
 
 import ForceCurve from "./components/ForceCurve.vue";

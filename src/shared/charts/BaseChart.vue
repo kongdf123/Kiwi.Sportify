@@ -9,7 +9,7 @@ const props = defineProps<{
     height?: string;
 }>();
 
-const { el, render } = useEChart();
+const { el:_el, render } = useEChart();
 const chartHeight = computed(() => props.height ?? "420px");
 
 watch(
@@ -28,7 +28,7 @@ watch(
 
 <template>
     <div class="rounded-[24px] bg-[var(--surface)] border border-[var(--border)] shadow-[var(--shadow)] p-6">
-        <div ref="el" :style="{
+        <div ref="_el" :style="{
             height: chartHeight,
         }" class="w-full" />
     </div>
