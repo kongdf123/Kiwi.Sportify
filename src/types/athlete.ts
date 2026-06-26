@@ -5,6 +5,7 @@ export interface Athlete {
 
 	sport: string;
 
+	team: string;
 	status: "ready" | "training" | "recovery";
 
 	recovery: number;

@@ -50,6 +50,12 @@ const router = createRouter({
 						import("@/views/sessions/SessionsView.vue"),
 				},
 				{
+					path: "sessions/new",
+					name: "session-create",
+					component: () =>
+						import("@/views/sessions/SessionCreate.vue"),
+				},
+				{
 					path: "reports",
 					name: "reports",
 					component: () => import("@/views/reports/ReportsView.vue"),

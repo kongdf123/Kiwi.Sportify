@@ -12,7 +12,9 @@ import BaseButton from "@/shared/ui/BaseButton.vue";
 		<div class="flex gap-3">
 			<BaseButton variant="secondary"> All </BaseButton>
 			<BaseButton variant="ghost"> Running </BaseButton>
-			<BaseButton> New Session </BaseButton>
+			<RouterLink to="/sessions/new">
+				<BaseButton> New Session </BaseButton>
+			</RouterLink>
 		</div>
 	</div>
 </template>

@@ -18,6 +18,7 @@ export const useAthleteStore = defineStore(
 					recovery: 92,
 					sessions: 114,
 					avatar: "EC",
+					team: ""
 				},
 
 				{
@@ -28,6 +29,7 @@ export const useAthleteStore = defineStore(
 					recovery: 78,
 					sessions: 84,
 					avatar: "RL",
+					team: ""
 				},
 			],
 		}),
